@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#ff6f91" />
+  <title>Happy Birthday My Love 💖</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Itim&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap');
+
+    :root{
+      --pink:#ff6f91;
+      --pink2:#ff9eb5;
+      --rose:#e85577;
+      --cream:#fff8ef;
+      --white:#ffffff;
+      --ink:#542e3a;
+      --muted:#8b6974;
+      --shadow:0 18px 45px rgba(160,77,101,.18);
+      --glass:rgba(255,255,255,.72);
+      --radius:28px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:"Noto Sans Thai",system-ui,sans-serif;
+      color:var(--ink);
+      min-height:100vh;
+      overflow-x:hidden;
+      background:
+        radial-gradient(circle at 10% 10%, #ffdce7 0 12%, transparent 30%),
+        radial-gradient(circle at 90% 15%, #ffe9bc 0 10%, transparent 28%),
+        linear-gradient(160deg,#fff7fb 0%,#fffaf0 52%,#fff1f6 100%);
+    }
+    body::before{
+      content:"";
+      position:fixed; inset:0; pointer-events:none; opacity:.45;
+      background-image:radial-gradient(#ffffff 1.2px, transparent 1.2px);
+      background-size:22px 22px;
+    }
+    .app{position:relative;z-index:2}
+    .screen{
+      min-height:100svh;
+      padding:26px 18px 38px;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      animation:fade .55s ease both;
+    }
+    .screen.active{display:flex}
+    @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+    .container{width:min(100%,900px);margin:auto}
+    .glass{
+      background:var(--glass);
+      border:1px solid rgba(255,255,255,.88);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+      border-radius:var(--radius);
+    }
+    h1,h2,h3,p{margin-top:0}
+    .hero{
+      text-align:center;
+      padding:24px;
+    }
+    .eyebrow{
+      display:inline-flex;gap:8px;align-items:center;
+      padding:8px 13px;border-radius:999px;
+      background:#fff0f5;color:var(--rose);font-weight:700;font-size:.88rem;
+      margin-bottom:12px;
+    }
+    .title{
+      font-family:"Itim","Noto Sans Thai",sans-serif;
+      font-size:clamp(2.2rem,9vw,5rem);
+      line-height:1.02;
+      margin-bottom:10px;
+      color:#a43f60;
+      text-shadow:0 4px 0 rgba(255,255,255,.75);
+    }
+    .subtitle{color:var(--muted);font-size:1rem;line-height:1.8}
+    .cover{
+      width:min(82vw,390px);
+      aspect-ratio:1/1;
+      margin:22px auto;
+      border-radius:36px;
+      overflow:hidden;
+      border:6px solid rgba(255,255,255,.85);
+      box-shadow:0 22px 45px rgba(144,60,85,.2);
+      position:relative;
+    }
+    .cover img{width:100%;height:100%;object-fit:cover;display:block}
+    .cover::after{
+      content:"";
+      position:absolute;inset:auto 0 0;height:35%;
+      background:linear-gradient(transparent,rgba(106,29,55,.35));
+    }
+    .btn{
+      appearance:none;border:0;cursor:pointer;
+      min-height:52px;padding:14px 22px;border-radius:18px;
+      font:inherit;font-weight:700;
+      transition:.2s ease;
+      display:inline-flex;align-items:center;justify-content:center;gap:9px;
+      text-decoration:none;
+    }
+    .btn:active{transform:scale(.98)}
+    .btn-primary{
+      background:linear-gradient(135deg,var(--pink),#ff9f85);
+      color:#fff;box-shadow:0 12px 28px rgba(255,111,145,.34);
+    }
+    .btn-soft{background:#fff0f5;color:#a13f5f}
+    .btn-wide{width:100%}
+    .navline{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:20px}
+    input{
+      width:100%;border:1px solid #f2d6df;background:rgba(255,255,255,.86);
+      padding:14px 15px;border-radius:15px;font:inherit;outline:none;color:var(--ink);
+    }
+    input:focus{border-color:var(--pink);box-shadow:0 0 0 4px rgba(255,111,145,.12)}
+    .loginbox{padding:28px;max-width:500px;margin:auto;text-align:center}
+    .lock{font-size:56px;margin-bottom:8px}
+    .error{min-height:26px;color:#cf4768;font-size:.92rem;margin:8px 0}
+    .section-head{text-align:center;margin-bottom:20px}
+    .section-head h2{
+      font-family:"Itim","Noto Sans Thai",sans-serif;
+      font-size:clamp(1.9rem,7vw,3.3rem);margin-bottom:8px;color:#9e3d5e
+    }
+    .stats{
+      display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:18px 0;
+    }
+    .stat{padding:18px;text-align:center}
+    .stat strong{display:block;font-size:1.8rem;color:#b54466}
+    .stat span{font-size:.86rem;color:var(--muted)}
+    .timeline{display:grid;gap:18px}
+    .memory{
+      display:grid;grid-template-columns:130px 1fr;gap:16px;padding:14px;
+      align-items:center;
+    }
+    .memory img{width:130px;height:130px;object-fit:cover;border-radius:20px}
+    .memory .date{font-size:.82rem;color:#b04b6a;font-weight:700;margin-bottom:5px}
+    .memory h3{margin:0 0 5px;font-size:1.06rem}
+    .memory p{margin:0;color:var(--muted);font-size:.92rem;line-height:1.65}
+    .cards{
+      display:grid;grid-template-columns:repeat(2,1fr);gap:14px;
+    }
+    .love-card{
+      perspective:900px;min-height:150px;cursor:pointer;user-select:none;
+    }
+    .love-inner{position:relative;width:100%;height:100%;min-height:150px;transition:transform .6s;transform-style:preserve-3d}
+    .love-card.open .love-inner{transform:rotateY(180deg)}
+    .face{
+      position:absolute;inset:0;border-radius:22px;padding:18px;
+      backface-visibility:hidden;display:flex;align-items:center;justify-content:center;text-align:center;
+      box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.9)
+    }
+    .front{background:linear-gradient(145deg,#fff,#fff0f5);font-weight:700;color:#aa4968}
+    .back{background:linear-gradient(145deg,#ffedf3,#fff9ee);transform:rotateY(180deg);line-height:1.65}
+    .quiz-card{padding:22px}
+    .progress{height:9px;background:#f4dce4;border-radius:999px;overflow:hidden;margin:12px 0 22px}
+    .progress > div{height:100%;background:linear-gradient(90deg,var(--pink),#ffb36c);width:0%;transition:.3s}
+    .answers{display:grid;gap:10px}
+    .answer{
+      width:100%;text-align:left;border:1px solid #f0d9e1;background:#fff;padding:13px 14px;border-radius:15px;
+      font:inherit;cursor:pointer;transition:.2s;color:var(--ink)
+    }
+    .answer:hover{border-color:#ef96b0;transform:translateY(-1px)}
+    .answer.good{background:#eaf9ef;border-color:#7bcf99}
+    .answer.bad{background:#fff0f2;border-color:#ef9aaa}
+    .quiz-feedback{min-height:28px;margin-top:10px;font-weight:600}
+    .gift-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .gift{
+      min-height:175px;padding:20px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+      cursor:pointer;transition:.2s;
+    }
+    .gift:hover{transform:translateY(-4px)}
+    .gift .emoji{font-size:58px}
+    .gift .reveal{display:none;line-height:1.6}
+    .gift.open .emoji,.gift.open .tap{display:none}
+    .gift.open .reveal{display:block}
+    .letter{padding:25px;line-height:2;font-size:1rem;white-space:pre-line}
+    .typing{min-height:240px}
+    .musicbox{padding:20px;display:flex;gap:14px;align-items:center;margin-bottom:15px}
+    .vinyl{
+      width:62px;height:62px;border-radius:50%;background:
+        radial-gradient(circle,#f9d0dc 0 7px,#6b2941 8px 14px,#2a1720 15px 100%);
+      flex:0 0 auto;box-shadow:0 10px 25px rgba(72,29,43,.22)
+    }
+    .vinyl.spin{animation:spin 3s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .final{text-align:center;padding:28px}
+    .final .big{font-size:72px;margin:0}
+    .final h2{font-family:"Itim";font-size:clamp(2.4rem,9vw,5rem);color:#a33d5e;margin-bottom:10px}
+    .heart-float{
+      position:fixed;bottom:-40px;pointer-events:none;z-index:1;
+      animation:floatUp linear forwards;filter:drop-shadow(0 4px 6px rgba(129,45,71,.12))
+    }
+    @keyframes floatUp{
+      to{transform:translateY(-115vh) rotate(22deg);opacity:0}
+    }
+    .confetti{
+      position:fixed;width:10px;height:16px;top:-20px;z-index:50;pointer-events:none;
+      animation:fall linear forwards;
+    }
+    @keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:.8}}
+    .topbar{
+      position:fixed;top:12px;right:12px;z-index:60;display:flex;gap:8px
+    }
+    .iconbtn{
+      width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.9);background:rgba(255,255,255,.8);
+      box-shadow:0 8px 20px rgba(100,45,62,.12);cursor:pointer;font-size:18px
+    }
+    .small-note{font-size:.82rem;color:var(--muted);text-align:center;margin-top:12px}
+    @media(max-width:650px){
+      .memory{grid-template-columns:92px 1fr}
+      .memory img{width:92px;height:92px;border-radius:16px}
+      .gift-grid{grid-template-columns:1fr}
+      .cards{grid-template-columns:1fr}
+      .stats{grid-template-columns:1fr 1fr}
+      .hero{padding:18px}
+    }
+  </style>
+</head>
+<body>
+<div class="app">
+  <div class="topbar">
+    <button class="iconbtn" id="musicBtn" aria-label="เปิดเพลง">🎵</button>
+  </div>
+
+  <section class="screen active" id="login">
+    <div class="container">
+      <div class="glass loginbox">
+        <div class="lock">🔐</div>
+        <div class="eyebrow">พื้นที่ลับสำหรับคนพิเศษ</div>
+        <h1 style="font-family:Itim;font-size:2.3rem;margin-bottom:8px">ก่อนเข้า…ตอบคำถามนี้ก่อน 💕</h1>
+        <p class="subtitle" id="secretQuestion"></p>
+        <input id="secretInput" autocomplete="off" placeholder="พิมพ์คำตอบตรงนี้..." />
+        <div class="error" id="secretError"></div>
+        <button class="btn btn-primary btn-wide" id="unlockBtn">เปิดของขวัญ 🎁</button>
+        <div class="small-note">คำใบ้: <span id="secretHint"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="screen" id="welcome">
+    <div class="container">
+      <div class="glass hero">
+        <div class="eyebrow">🎂 วันนี้เป็นวันของที่รัก</div>
+        <h1 class="title">Happy Birthday<br><span id="partnerName">My Love</span> 💖</h1>
+        <p class="subtitle" id="welcomeText"></p>
+        <div class="cover"><img id="coverImg" src="images/cover.svg" alt="รูปหน้าปก"></div>
+        <div class="stats">
+          <div class="glass stat"><strong id="ageYears">—</strong><span>ปีที่เธอทำให้โลกน่ารักขึ้น 🎂</span></div>
+          <div class="glass stat"><strong id="daysTogether">—</strong><span>วันที่เราเดินมาด้วยกัน ❤️</span></div>
+        </div>
+        <button class="btn btn-primary" data-next="story">เปิดเรื่องราวของเรา 💕</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="screen" id="story">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Our Story</div>
+        <h2>ความทรงจำของเรา 📸</h2>
+        <p class="subtitle">บางวันอาจธรรมดา แต่พอมีที่รักอยู่ด้วย มันก็กลายเป็นวันที่มีความสุขมากก</p>
+      </div>
+      <div class="timeline" id="timeline"></div>
+      <div class="navline">
+        <button class="btn btn-soft" data-next="welcome">← ย้อนกลับ</button>
+        <button class="btn btn-primary" data-next="love">เปิดการ์ดความในใจ 💌</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="screen" id="love">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Tap to Open</div>
+        <h2>สิ่งที่ฉันชอบในตัวเธอ 💗</h2>
+        <p class="subtitle">แตะการ์ดทีละใบ แล้วจะรู้ว่าทำไมเธอถึงพิเศษสำหรับฉัน</p>
+      </div>
+      <div class="cards" id="loveCards"></div>
+      <div class="navline">
+        <button class="btn btn-soft" data-next="story">← ย้อนกลับ</button>
+        <button class="btn btn-primary" data-next="quiz">เล่นเกม Couple Quiz 🎮</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="screen" id="quiz">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Mini Game</div>
+        <h2>เธอจำเรื่องของเราได้แค่ไหน? 🎮</h2>
+      </div>
+      <div class="glass quiz-card">
+        <div style="display:flex;justify-content:space-between;gap:12px;font-weight:700">
+          <span id="quizCount">ข้อ 1</span><span>คะแนน <span id="score">0</span></span>
+        </div>
+        <div class="progress"><div id="progressBar"></div></div>
+        <h3 id="quizQuestion"></h3>
+        <div class="answers" id="answers"></div>
+        <div class="quiz-feedback" id="quizFeedback"></div>
+        <button class="btn btn-primary btn-wide" id="nextQuiz" style="display:none">ข้อต่อไป →</button>
+      </div>
+      <div class="navline">
+        <button class="btn btn-soft" data-next="love">← ย้อนกลับ</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="screen" id="gifts">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Mystery Box</div>
+        <h2>เลือกเปิดของขวัญ 🎁</h2>
+        <p class="subtitle">มีของขวัญเล็ก ๆ ซ่อนอยู่ข้างใน แตะเปิดได้ทุกกล่องเลยนะ</p>
+      </div>
+      <div class="gift-grid" id="giftGrid"></div>
+      <div class="navline">
+        <button class="btn btn-primary" data-next="letter">อ่านข้อความสุดท้าย 💌</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="screen" id="letter">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Letter to You</div>
+        <h2>มีบางอย่างอยากบอกเธอ 💌</h2>
+      </div>
+      <div class="glass musicbox">
+        <div class="vinyl" id="vinyl"></div>
+        <div style="flex:1">
+          <strong id="songTitle">Our Song</strong>
+          <div class="subtitle" style="font-size:.86rem">ฟังไปอ่านข้อความไปแฟนต้องชอบแน่ๆ</div>
+        </div>
+        <button class="btn btn-soft" id="musicBtn2">▶️</button>
+      </div>
+      <div class="glass letter typing" id="letterText"></div>
+      <div class="navline">
+        <button class="btn btn-primary" id="finalBtn">ดู Surprise สุดท้าย 🎆</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="screen" id="final">
+    <div class="container">
+      <div class="glass final">
+        <p class="big">🎂</p>
+        <h2>HAPPY BIRTHDAY<br><span id="finalName">MY LOVE</span> ❤️</h2>
+        <p class="subtitle" id="finalMessage"></p>
+        <div style="font-size:54px;margin:18px 0">💖✨🎁✨💖</div>
+        <button class="btn btn-primary" id="surpriseBtn">เปิด Surprise สุดท้าย 🎁</button>
+        <div id="surpriseArea" style="margin-top:18px"></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<audio id="bgMusic" loop preload="metadata">
+  <source src="media/song.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+/* ==========================================================
+   💖 แก้ข้อมูลของคุณทั้งหมดตรง CONFIG จุดเดียว
+   ========================================================== */
+const CONFIG = {
+  partnerName: "💖 นะงับที่รัก",
+  birthday: "2001-09-02",       // YYYY-MM-DD
+  togetherSince: "2026-01-01",  // วันที่เริ่มคบ YYYY-MM-DD
+
+  secretQuestion: "วันที่เราเริ่มคบกันคือวันอะไร?",
+  secretAnswer: "01/01/2026",
+  secretHint: "วัน / เดือน / ปี",
+
+  welcomeText:
+    "วันนี้เค้าไม่ได้มีแค่คำว่า Happy Birthday แต่อยากพาเบบี๋กลับไปดูเรื่องราวเล็ก ๆ ที่ทำให้เค้ายิ้มทุกครั้งที่นึกถึง 💕",
+
+  coverImage: "images/IMG_7281.jpeg",
+
+  memories: [
+    {
+      date: "5 ธันวาคม 2025",
+      title: "เที่ยวด้วยกันที่แรก",
+      text: "วันนั้นเค้าป่วยด้วย แต่เค้าก็อยากพาแฟนไปเที่ยว อุส่าเที่ยวด้วยกันครั้งแรกแต่เป็นไข้ซะงั้น เศร้า☹️",
+      image: "images/IMG_1077.jpeg"
+    },
+    {
+      date: "5 ธันวาคม 2025",
+      title: "ให้ดอกไม้แฟนครั้งแรก จะชอบไหมนะ?",
+      text: "เป็นครั้งแรกที่ให้ดอกไม้แฟน ไม่รู้แฟนจะชอบป่าว แต่ดูจากสีหน้าแล้วเค้าก็มีความสุขมากๆ",
+      image: "images/IMG_1088.jpeg"
+    },
+    {
+      date: "1 มกราคม 2026",
+      title: "วันแรกที่เราคบกัน 😘🎉",
+      text: "จำได้ว่าวันนั้นไปเที่ยวสวนทานตะวันกันคนเยอะมากกก ดีนะมีคนถ่ายรูปคู่ให้ด้วย",
+      image: "images/IMG_1693.jpeg"
+    },
+    {
+      date: "10 เมษายน 2026",
+      title: "เที่ยวน้ำตกเอราวัณด้วยกัน",
+      text: "เหนื่อยมากเดินขึ้นน้ำตกแต่ละชั้น ดีนะเดิมไม่ถึงด้านบนไม่งั้นตายแน่ๆ 😂",
+      image: "images/IMG_4099.jpeg"
+    },
+    {
+      date: "22 เมษายน 2026",
+      title: "เที่ยวเกาะกันนนนน 🌊",
+      text: "เที่ยวต่างจังหวัดด้วยกันครั้งแรก ไกลมากแต่ก็สนุกมากๆๆๆๆ ",
+      image: "images/IMG_4326.jpeg"
+    },
+    {
+      date: "31 พฤษภาคม 2026",
+      title: "ถ่ายรูปแฟนก่อนแฟนกลับไปเรียน",
+      text: "ฮือๆๆ แฟนจะกลับแล้วมาถ่ายรูปให้แฟนก่อนกลับ",
+      image: "images/IMG_5676.jpeg"
+    },
+    {
+      date: "5 มิถุนายน 2026",
+      title: "ดูหนังด้วยกันจำไม่ได้ละครั้งที่เท่าไหร่",
+      text: "มาส่งแฟนก็แวะมาดูหนังด้วยกันก่อน ไม่อยากจากแฟนเลยยย",
+      image: "images/IMG_5888.jpeg"
+    },
+    {
+      date: "26 กรกฏาคม 2026",
+      title: "เที่ยวบึงฉวาก สุพรรณบุรี",
+      text: "เป็นการเที่ยวต่างจังหวัดด้วยกันเป็นครั้งที่ 2 นานมากกกกกว่าจะได้เที่ยวด้วยกัน",
+      image: "images/IMG_7400.jpeg"
+    },
+    {
+      date: "วันเกิดปีนี้",
+      title: "เขาแค่อยากบอกว่า",
+      text: "ขอให้ทุกวันของแฟนมีรอยยิ้ม และหวังว่าเขาจะได้เป็นหนึ่งในเหตุผลของรอยยิ้มนั้นเสมอ",
+      image: "images/IMG_7197.jpeg"
+    }
+  ],
+
+  loveReasons: [
+    "เค้าชอบรอยยิ้มของที่รัก เพราะมันทำให้วันที่เหนื่อยกลายเป็นวันที่ดีขึ้นได้เลย 😊",
+    "เค้าชอบฟังเวลาที่ที่รักบ่นๆ พูดไปเรื่อยๆ ถึงบ้างทีเค้าไม่เข้าใจแต่เค้าก็ชอบฟังนะ 😂",
+    "เค้าชอบเวลาที่เราได้เป็นตัวเองโดยไม่ต้องพยายามทำให้สมบูรณ์แบบ",
+    "ที่รักทำให้เรื่องธรรมดา ๆ กลายเป็นความทรงจำที่น่าจำ 💕",
+    "เค้าชอบความใส่ใจเล็ก ๆ ของที่รัก ถึงบางครั้งที่รักอาจไม่รู้ตัวก็ตาม",
+    "ขอบคุณที่อยู่ข้างกันทั้งวันที่ดีและวันที่ไม่ดี ❤️",
+    "แค่มีที่รักอยู่ใกล้ ๆ เค้าก็รู้สึกสบายใจขึ้นแล้ว",
+    "และเหตุผลสุดท้าย…เพราะที่รักคือที่รัก คนเดียวที่ไม่มีใครแทนได้ ❤️"
+  ],
+
+  quiz: [
+    {
+      q: "วันแรกที่เราเริ่มคบกันคือวันไหน?",
+      choices: ["1 ม.ค. 2026","1 ม.ค. 2025","1 มี.ค. 2026","1 มี.ค. 2025"],
+      answer: 0,
+      correct: "จำได้ด้วย! เก่งที่สุด ❤️",
+      wrong: "เกือบแล้วนะ 😂 เดี๋ยวมีเฉลยอยู่ใน Timeline"
+    },
+    {
+      q: "ถ้าให้เลือกกิจกรรมหนึ่งอย่างที่อยากทำด้วยกันตอนนี้?",
+      choices: ["กินของอร่อย","ไปเที่ยว","นอนดูหนัง","ถูกทุกข้อ"],
+      answer: 3,
+      correct: "แน่นอน! ทำด้วยกันหมดเลย 😆",
+      wrong: "จริง ๆ คำตอบคือ…อยากทำทุกอย่างกับแฟน 💕"
+    },
+    {
+      q: "ของขวัญที่ดีที่สุดสำหรับฉันคืออะไร?",
+      choices: ["ของแพง ๆ","วันหยุดยาว","ที่รัก","อาหาร"],
+      answer: 2,
+      correct: "ถูกต้องที่สุด 💖",
+      wrong: "คำตอบคือที่รักนั่นแหละ 😌"
+    },
+    {
+      q: "วันนี้ใครน่ารักที่สุด?",
+      choices: ["ที่รัก","ที่รัก","ที่รัก","ถูกทุกข้อ"],
+      answer: 3,
+      correct: "ถูกแบบเถียงไม่ได้เลย 🎂💕",
+      wrong: "ยังไงคำตอบก็ที่รักอยู่ดี 😂"
+    },
+    {
+      q: "ฉันอยากให้วันเกิดปีนี้ของเธอเป็นแบบไหน?",
+      choices: ["มีความสุข","ยิ้มเยอะ ๆ","ได้ทำสิ่งที่ชอบ","ทั้งหมดเลย"],
+      answer: 3,
+      correct: "นี่คือคำตอบที่เค้าอยากเห็นที่สุด ❤️",
+      wrong: "เค้าอยากให้ได้ทั้งหมดเลยนะ 💗"
+    }
+  ],
+
+  gifts: [
+    {emoji:"🍰", title:"Gift #1", text:"คูปองพาไปกินของอร่อย 1 มื้อ ร้านไหนก็เลือกได้เลย 💕"},
+    {emoji:"🎬", title:"Gift #2", text:"คูปองวันตามใจ 1 วัน จะดูหนัง เที่ยว หรือพักทั้งวันก็ได้ 😆"},
+    {emoji:"🎁", title:"Gift #3", text:"เลือกได้หนึ่งอย่างที่รักอยากได้อะไรบอกมาได้เลย ❤️"}
+  ],
+
+  songTitle: "PUN - DAY ONE 🎵",
+
+  letter: `สุขสันต์วันเกิดนะ ❤️
+
+ขอบคุณที่เข้ามาเป็นส่วนหนึ่งในชีวิตของเค้านะ
+ขอบคุณสำหรับทุกช่วงเวลาที่เราได้หัวเราะ ได้เที่ยว ได้กินของอร่อย
+รวมถึงวันที่เรางอนกันบ้าง เหนื่อยบ้าง หรือมีเรื่องให้ต้องเรียนรู้ไปด้วยกัน
+
+เค้าไม่รู้ว่าปีต่อ ๆ ไปจะมีเรื่องอะไรเกิดขึ้นอีก
+แต่สิ่งหนึ่งที่เค้าอยากบอกในวันเกิดปีนี้คือ
+ฉันดีใจมากที่มีที่รักเป็นแฟน
+
+ขอให้ปีนี้เป็นปีที่ที่รักได้ทำสิ่งที่อยากทำ
+มีคนดี ๆ อยู่รอบตัว มีสุขภาพแข็งแรง
+และมีเหตุผลให้ยิ้มในทุก ๆ วัน
+
+ถ้าวันไหนเหนื่อย ก็อย่าลืมว่ายังมีเค้าอยู่ตรงนี้นะ
+
+Happy Birthday คนพิเศษของฉัน 💖`,
+
+  finalMessage:
+    "ขอให้ปีนี้เต็มไปด้วยความสุข ความสำเร็จ รอยยิ้ม และเรื่องราวดี ๆ ที่เราจะได้สร้างด้วยกันอีกเยอะ ๆ นะ 💕",
+
+  // surpriseType: "text" | "video" | "link"
+  surpriseType: "link",
+  surpriseText: "🎁 ของขวัญจริงอยู่กับคนทำเว็บนี้นะ…ไปทวงได้เลย! 😆❤️",
+  surpriseVideo: "media/surprise.mp4",
+  surpriseLink: "https://chocolate28foryou-spec.github.io/surprise/"
+};
+/* ========================================================== */
+
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+
+function show(id){
+  $$(".screen").forEach(x=>x.classList.remove("active"));
+  $("#"+id).classList.add("active");
+  window.scrollTo({top:0,behavior:"smooth"});
+  if(id==="letter") startTyping();
+  if(id==="final") burstConfetti(120);
+}
+$$("[data-next]").forEach(b=>b.addEventListener("click",()=>show(b.dataset.next)));
+
+function daysBetween(a,b){
+  const d1 = new Date(a+"T00:00:00"), d2 = new Date(b+"T00:00:00");
+  return Math.max(0, Math.floor((d2-d1)/86400000));
+}
+function ageFrom(date){
+  const b = new Date(date+"T00:00:00"), t = new Date();
+  let age=t.getFullYear()-b.getFullYear();
+  const m=t.getMonth()-b.getMonth();
+  if(m<0 || (m===0 && t.getDate()<b.getDate())) age--;
+  return Math.max(0,age);
+}
+function normalize(v){return String(v).trim().toLowerCase().replace(/\s+/g,"");}
+
+$("#partnerName").textContent = CONFIG.partnerName;
+$("#finalName").textContent = CONFIG.partnerName.toUpperCase();
+$("#secretQuestion").textContent = CONFIG.secretQuestion;
+$("#secretHint").textContent = CONFIG.secretHint;
+$("#welcomeText").textContent = CONFIG.welcomeText;
+$("#coverImg").src = CONFIG.coverImage;
+$("#ageYears").textContent = ageFrom(CONFIG.birthday);
+$("#daysTogether").textContent = daysBetween(CONFIG.togetherSince, new Date().toISOString().slice(0,10)).toLocaleString("th-TH");
+$("#songTitle").textContent = CONFIG.songTitle;
+$("#finalMessage").textContent = CONFIG.finalMessage;
+
+function unlock(){
+  const val=normalize($("#secretInput").value);
+  if(val===normalize(CONFIG.secretAnswer)){
+    $("#secretError").textContent="";
+    burstConfetti(70);
+    setTimeout(()=>show("welcome"),350);
+  } else {
+    $("#secretError").textContent="ยังไม่ถูกนะ 😝 ลองคิดอีกนิด";
+    $("#secretInput").animate(
+      [{transform:"translateX(0)"},{transform:"translateX(-7px)"},{transform:"translateX(7px)"},{transform:"translateX(0)"}],
+      {duration:260}
+    );
+  }
+}
+$("#unlockBtn").addEventListener("click",unlock);
+$("#secretInput").addEventListener("keydown",e=>{if(e.key==="Enter")unlock()});
+
+$("#timeline").innerHTML = CONFIG.memories.map(m=>`
+  <article class="glass memory">
+    <img src="${m.image}" alt="${m.title}">
+    <div>
+      <div class="date">${m.date}</div>
+      <h3>${m.title}</h3>
+      <p>${m.text}</p>
+    </div>
+  </article>`).join("");
+
+$("#loveCards").innerHTML = CONFIG.loveReasons.map((t,i)=>`
+  <div class="love-card">
+    <div class="love-inner">
+      <div class="face front">💌 แตะเปิดการ์ด #${i+1}</div>
+      <div class="face back">${t}</div>
+    </div>
+  </div>`).join("");
+$$(".love-card").forEach(c=>c.addEventListener("click",()=>c.classList.toggle("open")));
+
+let qi=0, score=0, answered=false;
+function renderQuiz(){
+  answered=false;
+  const q=CONFIG.quiz[qi];
+  $("#quizCount").textContent=`ข้อ ${qi+1} / ${CONFIG.quiz.length}`;
+  $("#score").textContent=score;
+  $("#progressBar").style.width=`${(qi/CONFIG.quiz.length)*100}%`;
+  $("#quizQuestion").textContent=q.q;
+  $("#quizFeedback").textContent="";
+  $("#nextQuiz").style.display="none";
+  $("#answers").innerHTML=q.choices.map((c,i)=>`<button class="answer" data-i="${i}">${String.fromCharCode(65+i)}. ${c}</button>`).join("");
+  $$("#answers .answer").forEach(b=>b.addEventListener("click",()=>checkAnswer(Number(b.dataset.i),b)));
+}
+function checkAnswer(i,btn){
+  if(answered)return;
+  answered=true;
+  const q=CONFIG.quiz[qi];
+  $$("#answers .answer").forEach(x=>x.disabled=true);
+  if(i===q.answer){
+    score++;
+    btn.classList.add("good");
+    $("#quizFeedback").textContent=q.correct;
+  }else{
+    btn.classList.add("bad");
+    $$("#answers .answer")[q.answer].classList.add("good");
+    $("#quizFeedback").textContent=q.wrong;
+  }
+  $("#score").textContent=score;
+  $("#progressBar").style.width=`${((qi+1)/CONFIG.quiz.length)*100}%`;
+  $("#nextQuiz").style.display="inline-flex";
+  $("#nextQuiz").textContent=qi===CONFIG.quiz.length-1?"เปิดของขวัญ 🎁":"ข้อต่อไป →";
+}
+$("#nextQuiz").addEventListener("click",()=>{
+  if(qi<CONFIG.quiz.length-1){ qi++;renderQuiz(); }
+  else{
+    burstConfetti(80);
+    show("gifts");
+  }
+});
+renderQuiz();
+
+$("#giftGrid").innerHTML=CONFIG.gifts.map((g,i)=>`
+  <div class="glass gift">
+    <div class="emoji">${g.emoji}</div>
+    <strong class="tap">${g.title}<br><small>แตะเพื่อเปิด</small></strong>
+    <div class="reveal"><strong>${g.title}</strong><br>${g.text}</div>
+  </div>`).join("");
+$$(".gift").forEach(g=>g.addEventListener("click",()=>{
+  if(!g.classList.contains("open")) burstConfetti(30);
+  g.classList.add("open");
+}));
+
+let typingStarted=false;
+function startTyping(){
+  if(typingStarted)return;
+  typingStarted=true;
+  const el=$("#letterText");
+  el.textContent="";
+  let i=0;
+  const text=CONFIG.letter;
+  function step(){
+    if(i<text.length){
+      el.textContent+=text.charAt(i++);
+      setTimeout(step, text.charAt(i-1)==="\n" ? 70 : 24);
+    }
+  }
+  step();
+}
+
+const audio=$("#bgMusic"), vinyl=$("#vinyl");
+let musicOn=false;
+async function toggleMusic(){
+  try{
+    if(!musicOn){
+      await audio.play();
+      musicOn=true; vinyl.classList.add("spin");
+      $("#musicBtn").textContent="⏸️"; $("#musicBtn2").textContent="⏸️";
+    }else{
+      audio.pause(); musicOn=false; vinyl.classList.remove("spin");
+      $("#musicBtn").textContent="🎵"; $("#musicBtn2").textContent="▶️";
+    }
+  }catch(e){
+    alert("ยังไม่มีไฟล์เพลง กรุณานำไฟล์ MP3 ชื่อ song.mp3 ไปใส่ในโฟลเดอร์ media");
+  }
+}
+$("#musicBtn").addEventListener("click",toggleMusic);
+$("#musicBtn2").addEventListener("click",toggleMusic);
+
+$("#finalBtn").addEventListener("click",()=>show("final"));
+
+$("#surpriseBtn").addEventListener("click",()=>{
+  const a=$("#surpriseArea");
+  if(CONFIG.surpriseType==="video"){
+    a.innerHTML=`<video controls playsinline style="width:100%;border-radius:18px;box-shadow:var(--shadow)"><source src="${CONFIG.surpriseVideo}" type="video/mp4"></video>`;
+  }else if(CONFIG.surpriseType==="link"){
+    a.innerHTML=`<a class="btn btn-primary" href="${CONFIG.surpriseLink}" target="_blank" rel="noopener">ไปยัง Surprise 💖</a>`;
+  }else{
+    a.innerHTML=`<div class="glass" style="padding:18px;font-weight:700">${CONFIG.surpriseText}</div>`;
+  }
+  burstConfetti(130);
+});
+
+function burstConfetti(n=80){
+  const colors=["#ff6f91","#ffd166","#f7a8b8","#ffffff","#ff9f80","#d291bc"];
+  for(let i=0;i<n;i++){
+    const c=document.createElement("i");
+    c.className="confetti";
+    c.style.left=Math.random()*100+"vw";
+    c.style.background=colors[Math.floor(Math.random()*colors.length)];
+    c.style.animationDuration=(2.2+Math.random()*2.8)+"s";
+    c.style.animationDelay=(Math.random()*.45)+"s";
+    c.style.transform=`rotate(${Math.random()*360}deg)`;
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),5500);
+  }
+}
+setInterval(()=>{
+  if(document.hidden)return;
+  const h=document.createElement("div");
+  h.className="heart-float";
+  h.textContent=["💗","💖","💕","✨"][Math.floor(Math.random()*4)];
+  h.style.left=Math.random()*100+"vw";
+  h.style.fontSize=(14+Math.random()*20)+"px";
+  h.style.opacity=.25+Math.random()*.35;
+  h.style.animationDuration=(5+Math.random()*5)+"s";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),10500);
+},1000);
+</script>
+</body>
+</html>
